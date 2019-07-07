@@ -1,0 +1,12 @@
+{
+  "app": {
+    "hello-hello": "Hello, hello, hello"
+  },
+  "design-system": {
+    "table": {
+      "headers": {
+        "name": "name"
+      }
+    }
+  }
+}
