@@ -19,9 +19,7 @@ export interface TableCustomColumns {
 @Component({
   selector: 'app-custom-column',
   template: `
-    <span
-      [innerHTML]="customColumn.pipe.transform(currentValue, customColumn.args)"
-    ></span>
+    <span [innerHTML]="currentValue"></span>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -36,8 +34,11 @@ export class CustomColumnComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.currentValue = this.customColumn.row
-      ? this.row
-      : this.row[this.column];
+    const rowValue = this.customColumn.row ? this.row : this.row[this.column];
+
+    this.currentValue = this.customColumn.pipe.transform(
+      rowValue,
+      this.customColumn.args
+    );
   }
 }
