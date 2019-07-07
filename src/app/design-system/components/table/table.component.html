@@ -11,7 +11,17 @@
         <th cdk-header-cell *cdkHeaderCellDef>
           {{ translatedHeaders[header] | translate }}
         </th>
-        <td cdk-cell *cdkCellDef="let row">{{ row[header] }}</td>
+        <td cdk-cell *cdkCellDef="let row">
+          <app-custom-column
+            *ngIf="customColumns && customColumns[header]; else nomCustom"
+            [customColumn]="customColumns[header]"
+            [row]="row"
+            [column]="header"
+          ></app-custom-column>
+          <ng-template #nomCustom>
+            {{ row[header] }}
+          </ng-template>
+        </td>
       </ng-container>
     </ng-container>
 

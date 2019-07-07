@@ -6,6 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TableCustomColumns } from './custom-column.component';
 
 @Component({
   selector: 'app-table',
@@ -18,6 +19,8 @@ export class TableComponent implements OnChanges {
   @Input() translationKey: string;
   @Input() headers: string[];
   translatedHeaders: { [k: string]: string };
+
+  @Input() customColumns: TableCustomColumns;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.translationKey || changes.headers) {
