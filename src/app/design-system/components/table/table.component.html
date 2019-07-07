@@ -1,0 +1,21 @@
+<div class="mat-elevation-z8">
+  <table
+    cdk-table
+    class="full-width-table"
+    [dataSource]="dataSource"
+    aria-label="Elements"
+  >
+    <ng-container *ngFor="let header of headers">
+      <!-- Default Column -->
+      <ng-container [cdkColumnDef]="header">
+        <th cdk-header-cell *cdkHeaderCellDef>
+          {{ translatedHeaders[header] | translate }}
+        </th>
+        <td cdk-cell *cdkCellDef="let row">{{ row[header] }}</td>
+      </ng-container>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="headers"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: headers"></tr>
+  </table>
+</div>
