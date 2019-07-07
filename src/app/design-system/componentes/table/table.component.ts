@@ -1,10 +1,8 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  Component,
-  ViewChild
+  Component
 } from '@angular/core';
-import { MatSort } from '@angular/material';
 import { Observable } from 'rxjs';
 import { dataSource, TableItem } from './table-datasource';
 
@@ -15,13 +13,10 @@ import { dataSource, TableItem } from './table-datasource';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements AfterViewInit {
-  @ViewChild(MatSort) sort: MatSort;
-  dataSource: Observable<TableItem[]>;
+  dataSource: Observable<TableItem[]> = dataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
-  ngAfterViewInit() {
-    this.dataSource = dataSource;
-  }
+  ngAfterViewInit() {}
 }

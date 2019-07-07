@@ -5,7 +5,8 @@
   "design-system": {
     "table": {
       "headers": {
-        "name": "name"
+        "id": "Identification",
+        "name": "Name of"
       }
     }
   }
